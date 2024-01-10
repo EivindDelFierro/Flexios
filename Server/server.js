@@ -52,13 +52,14 @@ app.get('/landingpage', (req, res) => {
 
 // to create user into database // takes in body // username, password
 app.post('/user', userController.registerUser, (req, res) => {
-  return res.status(200).json(res.locals.registeredUser);
+  console.log();
+  return res.status(201).json(res.locals.registeredUser);
 });
 
 // delete user from database
-app.delete('/user', userController.deleteUser, (req, res) =>
-  res.status(201).json(res.locals.deletedUser)
-);
+app.delete('/user', userController.deleteUser, (req, res) => {
+  return res.status(202).json(res.locals.deletedUser);
+});
 
 // TODO:
 // get user from database
@@ -77,6 +78,11 @@ app.get('/api', controller.getStretches, (req, res) => {
 app.patch('/user/favorite', userController.addFavorite, (req, res) => {
   console.log('in server.js, res.locals.updatedUser: ', res.locals.updatedUser);
   return res.status(202).json(res.locals.updatedUser);
+});
+
+// delete a favorite
+app.delete('/user/favorite', userController.deleteFavorite, (req, res) => {
+  return res.status(202).json(res.locals.updatedUserDeletedFavorite);
 });
 
 // app.get('/api', controller.getExercise, (req, res) => {

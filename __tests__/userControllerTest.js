@@ -99,3 +99,30 @@ xdescribe('User favorite creation', () => {
       });
   });
 });
+
+describe('User favorite deletion', () => {
+  const username = 'Paul';
+  const password = 'Paul';
+  //fake favorite to delete
+  const favorite = {
+    name: 'HM Running Man Crunch',
+    type: 'cardio',
+    muscle: 'abdominals',
+    equipment: 'body_only',
+    difficulty: 'intermediate',
+    instructions: '',
+  };
+  it('should return the updated user if favorite was deleted', () => {
+    return request(server)
+      .patch('/user/favorite')
+      .send({ username, favorite })
+      .then(() => {
+          return request(server)
+          .delete('/user/favorite')
+          .send({ username, favorite })
+          .then((response) => {
+            expect(response.body.favorites).toEqual([]);
+          });
+    });
+  });
+});

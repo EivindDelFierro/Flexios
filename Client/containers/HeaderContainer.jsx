@@ -11,12 +11,24 @@
 
 import React from 'react';
 import * as actions from '../actionCreator/actionCreator.js';
+import { useDispatch } from 'react-redux';
 
 const HeaderContainer = () => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(actions.updateUSER_LOG_OFF());
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = 1;
+    overlay.style.display = 'block'
+  };
+
   return (
-    <div className="appHeaderBox">
-      <h4 className="mainHeader">Stretch</h4>
-      <button className="logoutBtn">Logout</button>
+    <div className='appHeaderBox'>
+      <h4 className='mainHeader'>Stretch</h4>
+      <button onClick={logoutHandler} className='logoutBtn'>
+        Logout
+      </button>
     </div>
   );
 };

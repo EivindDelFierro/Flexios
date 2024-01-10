@@ -1,9 +1,12 @@
-@import url('https://fonts.cdnfonts.com/css/geomanist');
+@import url('https://fonts.cdnfonts.com/css/oak-sans');
 
 * {
   margin: none;
   padding: none;
-  font-family: 'Geomanist', sans-serif;
+  font-family: 'Oak Sans', sans-serif;
+}
+strong {
+  font-weight: 600;
 }
 
 /* containers */
@@ -16,7 +19,6 @@
 }
 .appHeaderBox {
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 .cardHeadBox {
@@ -26,8 +28,69 @@
 }
 .mainHeader {
   font-size: 30px;
+  font-weight: 600;
   color: $darker;
 }
+.overlay {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  padding-top: 40%;
+}
+.overlayDiv {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $darker;
+  padding: 25px;
+  border-radius: 10px;
+  max-height: 50%;
+  vertical-align: middle;
+}
+.loginDiv,
+.signupDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.welcomeHead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $lightest;
+}
+
+.stretchCard {
+  background-color: $lighter;
+  color: $darker;
+  border-radius: 10px;
+}
+.cardHeader {
+  margin-left: 5px;
+  padding-top: 10px;
+}
+.favIcon {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+ul {
+  list-style-type: none;
+  margin-right: 5px;
+}
+li {
+  margin-bottom: 5px;
+}
+li:last-child {
+  padding-bottom: 10px;
+}
+
 /* dropdown menu */
 .muscle,
 .difficulty {
@@ -42,29 +105,6 @@
   margin-bottom: 10px;
 }
 
-.stretchCard {
-  background-color: $lighter;
-  color: $darker;
-  border-radius: 10px;
-}
-.cardHeader {
-  margin-left: 5px;
-  padding-top: 10px;
-}
-.favIcon {
-  margin-left: 20px;
-}
-ul {
-  list-style-type: none;
-  margin-right: 5px;
-}
-li {
-  margin-bottom: 5px;
-}
-li:last-child {
-  padding-bottom: 10px;
-}
-
 /* buttons */
 .logoutBtn {
   background-color: rgba(51, 51, 51, 0.05);
@@ -73,8 +113,6 @@ li:last-child {
   color: #333333;
   cursor: pointer;
   display: inline-block;
-  font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial,
-    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -90,7 +128,9 @@ li:last-child {
   touch-action: manipulation;
   max-height: 40px;
 }
-.favBtn {
+.favBtn,
+.loginBtn,
+.signupBtn {
   background-color: $light;
   color: $darker;
   padding: 10px;
@@ -101,7 +141,13 @@ li:last-child {
   margin-right: 5px;
   margin-bottom: 10px;
 }
+.loginBtn,
+.signupBtn {
+  width: 100%;
+}
+
 #overlay {
+  transition: opacity 1s linear;
   position: fixed;
   display: block;
   width: 100%;
@@ -110,7 +156,65 @@ li:last-child {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: black;
+  background-color: $dark;
   z-index: 2;
+}
+#usernameLogin,
+#passwordLogin,
+#usernameSignup,
+#passwordSignup,
+#passwordSignupConfirm {
+  margin-bottom: 5px;
+  display: flex;
+  background-color: $lightest;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+/* timer */
+.timerDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.timeDisplay {
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.startBtn,
+.pauseBtn,
+.resumeBtn,
+.restartBtn {
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
   cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  max-height: 40px;
+}
+.startBtn,
+.pauseBtn,
+.resumeBtn {
+  margin-right: 5px;
 }

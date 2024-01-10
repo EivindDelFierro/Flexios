@@ -28,13 +28,15 @@ const signup = () => {
         // update logged in user
         dispatch(actions.updateUSER_LOG_ON(data));
         // disable opacity
-        document.getElementById('overlay').style.display = 'none';
+        const overlay = document.getElementById('overlay');
+        overlay.style.opacity = 0;
+        setTimeout(() => overlay.style.display = 'none', 1000);
       })
       .catch((error) => alert(error));
   };
 
   return (
-    <div>
+    <div className="signupDiv">
       <form>
         <input type="text" id="usernameSignup" placeholder="Username"></input>
         <input
@@ -47,7 +49,9 @@ const signup = () => {
           id="passwordSignupConfirm"
           placeholder="Confirm Password"
         ></input>
-        <button onClick={(event) => signupFunc(event)}>Sign Up</button>
+        <button className="signupBtn" onClick={(event) => signupFunc(event)}>
+          Sign Up
+        </button>
       </form>
     </div>
   );
