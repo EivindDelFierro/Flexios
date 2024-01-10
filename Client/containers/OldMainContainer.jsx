@@ -40,14 +40,20 @@ const MainContainer = () => {
       {/* this p tag just helps us see where this MainContainer is being rendered */}
       <p>This is the MainContainer in Client/containers/MainContainer.jsx</p>
       {/* insert search bar here (input textbox and submit button) */}
+      <form action="">
       <label name='searchBar'>
         Search:
         <input id='searchQ' />
       </label>
+
+      submit
+
+      </form>
+
 
       {/* Stretch are individual search results from query to database/API */}
       {stretchComponents}
     </div>
   );
 };
-export default MainContainer;
+// export default MainContainer;
